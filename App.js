@@ -74,12 +74,32 @@ import {Text, StyleSheet, View, TextInput, Alert, Button} from 'react-native';
 export default class App extends Component {
   constructor(props) {
     super();
-    this.state = {};
+    this.state = {
+      TextInputName: '',
+      TextInputEmail: '',
+    };
   }
+
+  CheckTextInput = () => {
+    if (this.state.TextInputName != '') {
+      if (this.state.TextInputEmail != '') {
+        alert('Success');
+      } else {
+        alert('Please Input Email');
+      }
+    } else {
+      alert('Please Input Name');
+    }
+  };
   render() {
     return (
-      <View>
-        <Text> textInComponent </Text>
+      <View style={styles.container}>
+        <TextInput
+          placeholder="Enter Name"
+          underlineColorAndroid="transparent"
+          style={styles.TextInput}
+          onChangeText={(TextInputName) => this.setState({TextInputName})}
+        />
       </View>
     );
   }
