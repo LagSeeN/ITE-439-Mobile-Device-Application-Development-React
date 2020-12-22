@@ -1,212 +1,144 @@
-// import React, {Component} from 'react';
-// import {Alert, Button, Text, StyleSheet, View} from 'react-native';
+// import React, {useState} from 'react';
+// import {Text, StyleSheet, View, Button, StatusBar} from 'react-native';
 
-// export default class App extends Component {
-//   showAlert1() {
-//     Alert.alert('Alert Title', 'My Alert Msg', [
-//       {
-//         text: 'Cancal',
-//         onPress: () => alert('Cancel Processed'),
-//         style: 'cancel',
-//       },
-//       {
-//         text: 'Ok',
-//         onPress: () => alert('Ok Processed'),
-//       },
-//     ]);
-//   }
-//   showAlert2() {
-//     Alert.alert('Alert Title', 'My Alert Msg', [
-//       {
-//         text: 'Ask me Later',
-//         onPress: () => alert('Ask me Later Processed'),
-//       },
-//       {
-//         text: 'Cancal',
-//         onPress: () => alert('Cancel Processed'),
-//         style: 'cancel',
-//       },
-//       {
-//         text: 'Ok',
-//         onPress: () => alert('Ok Processed'),
-//       },
-//     ]);
-//   }
-//   render() {
-//     return (
-//       <View style={styles.contaner}>
-//         <View style={styles.buttonContainer}>
-//           <Button title="Button1" onPress={this.showAlert1} />
-//         </View>
-//         <View style={styles.buttonContainer}>
-//           <Button title="Button2" onPress={this.showAlert2} color="#009933" />
-//         </View>
+// const App = () => {
+//   const styleTypes = ['default', 'dark-content', 'light-content'];
+//   const [visibleStatusBar, setvisibleStatusBar] = useState(false);
+//   const [stylesStatusBar, setstylesStatusBar] = useState(styleTypes[0]);
+
+//   const changeVisibilityStatusBar = () => {
+//     setvisibleStatusBar(!visibleStatusBar);
+//   };
+
+//   const changeStylesStatusBar = () => {
+//     const styled = styleTypes.indexOf(stylesStatusBar) + 1;
+//     if (styled === styleTypes.length) return setstylesStatusBar(styleTypes[0]);
+//     return setstylesStatusBar(styleTypes[styled]);
+//   };
+
+//   return (
+//     <View style={styles.container}>
+//       <View>
+//         <Text style={styles.textStyle}>
+//           StatusBar Style : {stylesStatusBar}
+//         </Text>
+//         <Text style={styles.textStyle}>
+//           StatusBar Visibility : {!visibleStatusBar ? 'Visible' : 'Hidden'}
+//         </Text>
 //       </View>
-//     );
-//   }
-// }
+//       <StatusBar
+//         backgroundColor="blue"
+//         barStyle={stylesStatusBar}
+//         hidden={visibleStatusBar}
+//       />
+//       <View style={styles.buttonContainer}>
+//         <Button
+//           title="Toggle StatusBar"
+//           onPress={() => changeVisibilityStatusBar()}
+//         />
+//       </View>
+//       <View style={styles.buttonContainer}>
+//         <Button
+//           title="Change Styles StatusBar"
+//           onPress={() => changeStylesStatusBar()}
+//         />
+//       </View>
+//     </View>
+//   );
+// };
+
+//////////////////////////////
+
+// import React, {useState} from 'react';
+// import {Text, StyleSheet, View, Button, SafeAreaView} from 'react-native';
+// import Icon from 'react-native-ionicons';
+
+// const App = () => {
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <View style={styles.container}>
+//         <Text style={styles.titleText}>
+//           Example to Use Ionicons in React native using react-native-ionicons
+//         </Text>
+//         <Text style={styles.textStyle}>
+//           Icon(camera, infomation-circle-outline) for all platforms
+//         </Text>
+//         <Text style={styles.instructions}>
+//           <Icon name="camera" size={40} color="red" />
+//         </Text>
+//         <Text style={styles.instructions}>
+//           <Icon name="information-circle-outline" size={40} color="blue" />
+//         </Text>
+//         <Text style={styles.instructions}>
+//           <Text style={styles.textStyle}>Platform specific Icon</Text>
+//         </Text>
+//         <Text style={styles.instructions}>
+//           <Icon ios="ios-add" android="md-albums" size={40} color="orange" />
+//         </Text>
+//         <Text style={styles.instructions}>
+//           <Icon ios="md-albums" android="ios-add" size={40} color="green" />
+//         </Text>
+//       </View>
+//     </SafeAreaView>
+//   );
+// };
+
+// export default App;
 
 // const styles = StyleSheet.create({
-//   contaner: {
+//   container: {
 //     flex: 1,
 //     justifyContent: 'center',
+//     backgroundColor: 'white',
+//     padding: 8,
 //   },
-//   buttonContainer: {
-//     margin: 20,
+//   titleText: {
+//     fontSize: 20,
+//     fontWeight: 'bold',
+//     textAlign: 'center',
+//     paddingVertical: 20,
+//   },
+//   textStyle: {
+//     textAlign: 'center',
+//     marginTop: 20,
+//   },
+//   instructions: {
+//     textAlign: 'center',
+//     margin: 10,
 //   },
 // });
 
 ///////////////////////////////
-
-// import React, {useState} from 'react';
-// import {Text, StyleSheet, View, Switch, SafeAreaView} from 'react-native';
-
-// const App = () => {
-//   const [switchValue, setSwitchValue] = useState(false);
-
-//   const toggleSwitch = (value) => {
-//     setSwitchValue(value);
-//   };
-
-//   return (
-//     <SafeAreaView style={{flex: 1}}>
-//       <View style={styles.contaner}>
-//         <Text>{switchValue ? 'Switch is ON' : 'Switch is OFF'}</Text>
-//         <Switch
-//           style={{marginTop: 30}}
-//           onValueChange={toggleSwitch}
-//           value={switchValue}
-//         />
-//       </View>
-//     </SafeAreaView>
-//   );
-// };
-
-// export default App;
-
-// const styles = StyleSheet.create({
-//   contaner: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   buttonContainer: {
-//     margin: 20,
-//   },
-// });
-
-////////////////////////////////////
-
-// import React, {useState} from 'react';
-// import {
-//   Text,
-//   StyleSheet,
-//   View,
-//   SafeAreaView,
-//   Modal,
-//   Button,
-// } from 'react-native';
-
-// const App = () => {
-//   const [showModal, setShowModal] = useState();
-
-//   return (
-//     <SafeAreaView style={{flex: 1}}>
-//       <View style={styles.contaner}>
-//         <Modal animationType={'slide'} transparent={false} visible={showModal}>
-//           <View style={styles.modal}>
-//             <Text style={styles.text}>Modal is open!</Text>
-//             <Button
-//               title="Click To Close Modal"
-//               onPress={() => {
-//                 setShowModal(!showModal);
-//               }}
-//             />
-//           </View>
-//         </Modal>
-//         <Button
-//           title="Click To Show Modal"
-//           onPress={() => {
-//             setShowModal(!showModal);
-//           }}
-//         />
-//       </View>
-//     </SafeAreaView>
-//   );
-// };
-
-// export default App;
-
-// const styles = StyleSheet.create({
-//   contaner: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     backgroundColor: '#ecf0f1',
-//     marginTop: 30,
-//   },
-//   modal: {
-//     flex: 1,
-//     alignItems: 'center',
-//     backgroundColor: 'blue',
-//     padding: 100,
-//   },
-//   text: {
-//     color: 'white',
-//     marginTop: 10,
-//     fontSize: 20,
-//     padding: 10,
-//   },
-// });
-
-/////////////////////////////////////////
 
 import React, {useState} from 'react';
 import {
   Text,
   StyleSheet,
   View,
-  SafeAreaView,
-  Modal,
   Button,
-  TouchableNativeFeedback,
+  SafeAreaView,
+  ActivityIndicator,
 } from 'react-native';
+import WebView from 'react-native-webview';
+
+const activityIndicatorElement = () => {
+  return (
+    <ActivityIndicator
+      color="#009688"
+      size="large"
+      style={styles.activityIndicatorStyle}
+    />
+  );
+};
 
 const App = () => {
-  const [showModal, setShowModal] = useState();
-
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={styles.centeredView}>
-        <Modal animationType={'slide'} transparent={true} visible={showModal}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>
-                สวัสดีครับ/ค่ะ ไฟในห้องปิดอยู่ครับ
-              </Text>
-              <TouchableNativeFeedback
-                onPress={() => {
-                  setShowModal(!showModal);
-                }}
-                background={TouchableNativeFeedback.SelectableBackground()}>
-                <View style={styles.closeButton}>
-                  <Text style={styles.textStyle}> กรุณากดปุ่มเปิดไฟ </Text>
-                </View>
-              </TouchableNativeFeedback>
-            </View>
-          </View>
-        </Modal>
-        <Text style={styles.modalText}>คุณลืมปิดไฟในห้อง</Text>
-        <TouchableNativeFeedback
-          onPress={() => {
-            setShowModal(!showModal);
-          }}
-          background={TouchableNativeFeedback.SelectableBackground()}>
-          <View style={styles.openButton}>
-            <Text style={styles.textStyle}> กรุณากดปุ่มปิดไฟ </Text>
-          </View>
-        </TouchableNativeFeedback>
-      </View>
+      <WebView
+        source={{uri: 'https://www.google.com/'}}
+        style={{marginTop: 20}}
+        incognito={true}
+      />
     </SafeAreaView>
   );
 };
@@ -214,47 +146,12 @@ const App = () => {
 export default App;
 
 const styles = StyleSheet.create({
-  centeredView: {
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  activityIndicatorStyle: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-
-  openButton: {
-    backgroundColor: '#F194FF',
-    borderRadius: 5,
-    padding: 10,
-    elevation: 2,
-  },
-  closeButton: {
-    backgroundColor: 'red',
-    borderRadius: 5,
-    padding: 10,
-    elevation: 2,
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
   },
 });
