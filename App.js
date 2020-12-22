@@ -134,11 +134,16 @@ const activityIndicatorElement = () => {
 const App = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <WebView
-        source={{uri: 'https://www.google.com/'}}
-        style={{marginTop: 20}}
-        incognito={true}
-      />
+      <View style={styles.container}>
+        <WebView
+          source={{uri: 'https://www.google.co.jp/'}}
+          javaScriptEnabled={true}
+          domStorageEnabled={true}
+          incognito={true}
+          renderLoading={activityIndicatorElement}
+          startInLoadingState={true}
+        />
+      </View>
     </SafeAreaView>
   );
 };
