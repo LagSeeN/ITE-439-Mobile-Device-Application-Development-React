@@ -1,70 +1,4 @@
 // import * as React from 'react';
-// import {Text, View, Button} from 'react-native';
-// import {NavigationContainer} from '@react-navigation/native';
-// import {createStackNavigator} from '@react-navigation/stack';
-
-// function homeScreen({navigation}) {
-//   return (
-//     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-//       <Text>Home Screen</Text>
-//       <Button
-//         title="Go to Detail"
-//         onPress={() => {
-//           // with params
-//           navigation.navigate('details', {
-//             itemID: 86,
-//             otherParam: 'TNI',
-//           });
-//         }}
-//       />
-//     </View>
-//   );
-// }
-// function detailsScreen({route, navigation}) {
-//   const {itemID} = route.params;
-//   const {otherParam} = route.params;
-//   return (
-//     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-//       <Text>Details Screen</Text>
-//       <Text>ItemID : {JSON.stringify(itemID)}</Text>
-//       <Text>Other Param : {JSON.stringify(otherParam)}</Text>
-//       <Button
-//         title="Go to Details... again"
-//         onPress={() => {
-//           navigation.push('details', {
-//             itemID: Math.floor(Math.random() * 100),
-//             otherParam: 'TNI',
-//           });
-//         }}
-//       />
-//       <Button title="Go to Home" onPress={() => navigation.navigate('home')} />
-//       <Button title="Go back" onPress={() => navigation.goBack()} />
-//       <Button
-//         title="Go back to first screen in stack"
-//         onPress={() => navigation.popToTop()}
-//       />
-//     </View>
-//   );
-// }
-
-// const Stack = createStackNavigator();
-
-// function App() {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator initialRouteName="home">
-//         <Stack.Screen name="home" component={homeScreen} />
-//         <Stack.Screen name="details" component={detailsScreen} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
-
-// export default App;
-
-////////////////
-
-// import * as React from 'react';
 // import {NavigationContainer} from '@react-navigation/native';
 // import {createStackNavigator} from '@react-navigation/stack';
 
@@ -87,16 +21,6 @@
 //             headerTitleStyle: {fontWeight: 'bold'},
 //           }}
 //         />
-//         <Stack.Screen
-//           name="SecondPage"
-//           component={SecondPage}
-//           options={{
-//             title: 'Second Page',
-//             headerStyle: {backgroundColor: '#009688'},
-//             headerTintColor: '#fff',
-//             headerTitleStyle: {fontWeight: 'bold'},
-//           }}
-//         />
 //       </Stack.Navigator>
 //     </NavigationContainer>
 //   );
@@ -104,59 +28,223 @@
 
 // export default App;
 
-///////////////////////////////////////
+// import React from 'react';
+// import {StyleSheet, Text, View, SafeAreaView, Alert} from 'react-native';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon2 from 'react-native-vector-icons/Zocial';
 
-import * as React from 'react';
-import {Text, TextInput, View, Button} from 'react-native';
+// const App = () => {
+//   return (
+//     <SafeAreaView style={{flex: 1}}>
+//       <View style={styles.container}>
+//         <Text style={styles.heading}>
+//           Example to Use React Native Vetor Icon
+//         </Text>
+//         <View style={styles.iconContainer}>
+//           <Icon name="rocket" size={30} color="#900" />
+//           <Icon2 name="appstore" size={30} />
+//           <Icon.Button
+//             name="facebook"
+//             backgroundColor="#3b5998"
+//             onPress={() => alert('Login with Apple ID')}>
+//             Login with Facebook
+//           </Icon.Button>
+//         </View>
+//       </View>
+//     </SafeAreaView>
+//   );
+// };
+
+// export default App;
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+//   heading: {
+//     fontSize: 20,
+//     textAlign: 'center',
+//   },
+//   iconContainer: {
+//     marginTop: 20,
+//     marginBottom: 20,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     textAlign: 'center',
+//   },
+// });
+
+/////////////////////////
+
+// import React from 'react';
+// import {StyleSheet, Text, View, Button} from 'react-native';
+
+// import {createDrawerNavigator} from '@react-navigation/drawer';
+// import {NavigationContainer} from '@react-navigation/native';
+
+// function HomeScreen({navigation}) {
+//   return (
+//     <View style={styles.drawerStyle}>
+//       <Button
+//         onPress={() => navigation.navigate('Notifications')}
+//         title="Go to notifications"
+//       />
+//     </View>
+//   );
+// }
+
+// function Notifications({navigation}) {
+//   return (
+//     <View style={styles.drawerStyle}>
+//       <Button onPress={() => navigation.goBack()} title="Go to HomeScreen" />
+//     </View>
+//   );
+// }
+
+// const Drawer = createDrawerNavigator();
+
+// export default function App() {
+//   return (
+//     <NavigationContainer>
+//       <Drawer.Navigator initialRouteName="Home">
+//         <Drawer.Screen name="Home" component={HomeScreen} />
+//         <Drawer.Screen name="Notifications" component={Notifications} />
+//       </Drawer.Navigator>
+//     </NavigationContainer>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   drawerStyle: {
+//     flex: 1,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
+
+/////////////////////////////////////
+
+import React from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
+
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-function HomeScreen({navigation, route}) {
-  React.useEffect(() => {
-    if (route.params?.post) {
-    }
-  }, [route.params?.post]);
+import FirstPage from './pages/FirstPage';
+import SecondPage from './pages/SecondPage';
+import ThirdPage from './pages/ThirdPage';
+
+const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+const NavigationDrawerStructor = (props) => {
+  const toggleDrawer = () => {
+    props.navigationProps.toggleDrawer();
+  };
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Button
-        title="Create Post"
-        onPress={() => navigation.navigate('CreatePost')}
-      />
-      <Text style={{margin: 10}}>Post: {route.params?.post}</Text>
+    <View style={{flexDirection: 'row'}}>
+      <TouchableOpacity onPress={() => toggleDrawer()}>
+        <Image
+          source={require('./asset/drawerWhite.png')}
+          style={{width: 25, height: 25, marginLeft: 5}}
+        />
+      </TouchableOpacity>
     </View>
   );
-}
-function CreatePostScreen({navigation, route}) {
-  const [postText, setPostText] = React.useState('');
+};
 
+function firstScreenStack({navigation}) {
   return (
-    <>
-      <TextInput
-        multiline
-        placeholder="Input text here"
-        style={{height: 200, padding: 10, backgroundColor: 'white'}}
-        value={postText}
-        onChangeText={setPostText}
-      />
-      <Button
-        title="Done"
-        onPress={() => {
-          navigation.navigate('Home', {post: postText});
-        }}
-      />
-    </>
+    <Stack.Navigator initialRouteName="FirstPage">
+      <Stack.Screen
+        name="FirstPage"
+        component={FirstPage}
+        options={{
+          title: 'FirstPage',
+          headerLeft: () => (
+            <NavigationDrawerStructor navigationProps={navigation} />
+          ),
+          headerStyle: {backgroundColor: '#A5B59C'},
+          headerTintColor: '#fff',
+          headerTitleStyle: {fontWeight: 'bold'},
+        }}></Stack.Screen>
+    </Stack.Navigator>
   );
 }
-const Stack = createStackNavigator();
+
+function secondScreenStack({navigation}) {
+  return (
+    <Stack.Navigator initialRouteName="SecondPage">
+      <Stack.Screen
+        name="SecondPage"
+        component={SecondPage}
+        options={{
+          title: 'SecondPage',
+          headerLeft: () => (
+            <NavigationDrawerStructor navigationProps={navigation} />
+          ),
+          headerStyle: {backgroundColor: '#A5B59C'},
+          headerTintColor: '#fff',
+          headerTitleStyle: {fontWeight: 'bold'},
+        }}></Stack.Screen>
+    </Stack.Navigator>
+  );
+}
+
+function thirdScreenStack({navigation}) {
+  return (
+    <Stack.Navigator initialRouteName="ThirdPage">
+      <Stack.Screen
+        name="ThirdPage"
+        component={ThirdPage}
+        options={{
+          title: 'ThirdPage',
+          headerLeft: () => (
+            <NavigationDrawerStructor navigationProps={navigation} />
+          ),
+          headerStyle: {backgroundColor: '#A5B59C'},
+          headerTintColor: '#fff',
+          headerTitleStyle: {fontWeight: 'bold'},
+        }}></Stack.Screen>
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator mode="modal">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="CreatePost" component={CreatePostScreen} />
-      </Stack.Navigator>
+      <Drawer.Navigator
+        drawerContentOptions={{
+          activeTintColor: '#e91e63',
+          itemStyle: {marginVertical: 5},
+        }}>
+        <Drawer.Screen
+          name="FirstPage"
+          component={firstScreenStack}
+          options={{drawerLabel: 'First page  Option'}}
+        />
+        <Drawer.Screen
+          name="SecondPage"
+          component={secondScreenStack}
+          options={{drawerLabel: 'Second page  Option'}}
+        />
+        <Drawer.Screen
+          name="ThirdPage"
+          component={thirdScreenStack}
+          options={{drawerLabel: 'Third page  Option'}}
+        />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }

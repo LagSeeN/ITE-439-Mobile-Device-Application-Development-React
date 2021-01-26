@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Button, View, Text, SafeAreaView} from 'react-native';
 
-const SecondPage = ({navigation}) => {
+const ThirdPage = ({route, navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1, padding: 16}}>
@@ -17,15 +17,15 @@ const SecondPage = ({navigation}) => {
               textAlign: 'center',
               marginBottom: 16,
             }}>
-            This is Second Page under Second Page Option
+            This is Third Page under Second Page Option
           </Text>
           <Button
-            title="Go to First Page"
             onPress={() => navigation.navigate('FirstPage')}
+            title="Go to First Page"
           />
           <Button
-            title="Go to Third Page"
-            onPress={() => navigation.navigate('ThirdPage')}
+            onPress={() => navigation.navigate('SecondPage')}
+            title="Go to Second Page"
           />
         </View>
       </View>
@@ -33,4 +33,4 @@ const SecondPage = ({navigation}) => {
   );
 };
 
-export default SecondPage;
+export default ThirdPage;
