@@ -1,36 +1,47 @@
-import * as React from 'react';
-import {Button, View, Text, SafeAreaView} from 'react-native';
+import React, {useState} from 'react';
+import {Button, View, Text, SafeAreaView, StyleSheet} from 'react-native';
 
-const FirstPage = ({navigation}) => {
+const FirstPage = ({navigation, route}) => {
+  const [visible, setVisible] = useState(route.params.userType === 'user');
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1, padding: 16}}>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Text
-            style={{
-              fontSize: 25,
-              textAlign: 'center',
-              marginBottom: 16,
-            }}>
-            This is the First Page under First Page Option
+      <View style={{flex: 1, padding: 20}}>
+        <View style={styles.textContainer}>
+          <Text style={styles.textStyle}>
+            Dynamically Set Drawer/Sidebar Options {'\n'}
+            inReact Navigation Drawer {'\n\n'}
+            First Page
           </Text>
           <Button
-            onPress={() => navigation.navigate('SecondPage')}
-            title="Go to Second Page"
+            title="Go to Initial Page"
+            onPress={() => navigation.navigate('LandingPage')}
           />
-          <Button
-            onPress={() => navigation.navigate('ThirdPage')}
-            title="Go to Third Page"
-          />
+          {visible ? (
+            <Button
+              title="Change Access to Guest"
+              onPress={() => {
+                navigation.navigate('drawerStack', {userType: 'guest'});
+                setVisible(false);
+              }}
+            />
+          ) : null}
         </View>
       </View>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  textContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textStyle: {
+    fontSize: 18,
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+});
 
 export default FirstPage;
