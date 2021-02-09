@@ -36,7 +36,7 @@ export default class NewsScreen extends Component {
     );
     this.setState({
       news: response.data,
-      artcles: response.data.artcles,
+      articles: response.data.articles,
       totalResults: response.data.totalResults,
       loading: false,
     });
@@ -60,7 +60,7 @@ export default class NewsScreen extends Component {
           }}>
           <View style={{flex: 1, flexDirection: 'row', margin: 10}}>
             <Image
-              resizeMethod="cover"
+              resizeMode="cover"
               source={{uri: urlToImage}}
               style={{flex: 1, width: '100%', height: '100%'}}
             />
@@ -87,7 +87,7 @@ export default class NewsScreen extends Component {
         ) : (
           <FlatList
             data={this.state.articles}
-            keyExtractor={({item}) => item.title}
+            keyExtractor={(item) => item.title}
             renderItem={this._renderItem}
             refreshing={this.state.loading}
             onRefresh={this._onRefresed}
