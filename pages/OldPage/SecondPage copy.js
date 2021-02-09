@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Button, View, Text, SafeAreaView, StyleSheet} from 'react-native';
+import * as React from 'react';
+import {Button, View, Text, SafeAreaView} from 'react-native';
 
 const SecondPage = ({navigation}) => {
   return (
@@ -17,19 +17,15 @@ const SecondPage = ({navigation}) => {
               textAlign: 'center',
               marginBottom: 16,
             }}>
-            Setting
-          </Text>
-          <Text
-            style={{
-              fontSize: 25,
-              textAlign: 'center',
-              marginBottom: 16,
-            }}>
-            (You are on SecondPage)
+            This is Second Page under Second Page Option
           </Text>
           <Button
-            title="Go to Home"
+            title="Go to First Page"
             onPress={() => navigation.navigate('FirstPage')}
+          />
+          <Button
+            title="Go to Third Page"
+            onPress={() => navigation.navigate('ThirdPage')}
           />
         </View>
       </View>
