@@ -32,7 +32,7 @@ export default class NewsScreen extends Component {
 
   async getData() {
     const response = await axios.get(
-      'https://newsapi.org/v2/top-headlines?country=th&apiKey=a9802435463346ebb73bc1bd7717b13f',
+      'https://newsapi.org/v2/top-headlines?country=th&apiKey=ab0d4aca4cea481e8157d31c68eb2b23',
     );
     this.setState({
       news: response.data,
