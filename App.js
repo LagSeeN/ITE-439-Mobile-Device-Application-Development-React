@@ -1,100 +1,82 @@
 import * as React from 'react';
-import {Image} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import HomeScreen from './pages/HomeScreen';
-import SettingScreen from './pages/SettingScreen';
-import ProfileScreen from './pages/ProfileScreen';
-import NewsScreen from './pages/NewsScreen';
+import RegisterUser from './pages/RegisterUser';
+import UpdateUser from './pages/UpdateUser';
+import ViewUser from './pages/ViewUser';
+import ViewAllUser from './pages/ViewAllUser';
+import DeleteUser from './pages/DeleteUser';
 
 const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
-
-function HomeStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{title: 'Home Page'}}
-      />
-      <Stack.Screen
-        name="News"
-        component={NewsScreen}
-        options={{title: 'News Page'}}
-      />
-      <Stack.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{title: 'Profile Page'}}
-      />
-    </Stack.Navigator>
-  );
-}
-
-function SettingsStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Settings"
-        component={SettingScreen}
-        options={{title: 'Setting Page'}}
-      />
-      <Stack.Screen
-        name="News"
-        component={NewsScreen}
-        options={{title: 'News Page'}}
-      />
-    </Stack.Navigator>
-  );
-}
 
 function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen
-          name="HomeStack"
-          component={HomeStack}
+      <Stack.Navigator initialRouteName="HomeScreen">
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
           options={{
-            tabBarLabel: 'Home',
-            tabBarIcon: ({focused, color, size}) => {
-              return (
-                <Image
-                  source={
-                    focused
-                      ? require('./asset/logo1.png')
-                      : require('./asset/logo3.png')
-                  }
-                  style={{width: 20, height: 20, borderRadius: 40 / 2}}
-                />
-              );
-            },
+            title: 'Home',
+            headerStyle: {backgroundColor: '#008B00'},
+            headerTintColor: '#fff',
+            headerTitleStyle: {fontWeight: 'bold'},
           }}
         />
-        <Tab.Screen
-          name="SettingsStack"
-          component={SettingsStack}
+        <Stack.Screen
+          name="View"
+          component={ViewUser}
           options={{
-            tabBarLabel: 'Stack',
-            tabBarIcon: ({focused, color, size}) => {
-              return (
-                <Image
-                  source={
-                    focused
-                      ? require('./asset/logo2.png')
-                      : require('./asset/logo3.png')
-                  }
-                  style={{width: 20, height: 20, borderRadius: 40 / 2}}
-                />
-              );
-            },
+            title: 'View User',
+            headerStyle: {backgroundColor: '#008B00'},
+            headerTintColor: '#fff',
+            headerTitleStyle: {fontWeight: 'bold'},
           }}
         />
-      </Tab.Navigator>
+        <Stack.Screen
+          name="ViewAllUser"
+          component={ViewAllUser}
+          options={{
+            title: 'View All User',
+            headerStyle: {backgroundColor: '#008B00'},
+            headerTintColor: '#fff',
+            headerTitleStyle: {fontWeight: 'bold'},
+          }}
+        />
+        <Stack.Screen
+          name="RegisterUser"
+          component={RegisterUser}
+          options={{
+            title: 'Register User',
+            headerStyle: {backgroundColor: '#008B00'},
+            headerTintColor: '#fff',
+            headerTitleStyle: {fontWeight: 'bold'},
+          }}
+        />
+        <Stack.Screen
+          name="UpdateUser"
+          component={UpdateUser}
+          options={{
+            title: 'Update User',
+            headerStyle: {backgroundColor: '#008B00'},
+            headerTintColor: '#fff',
+            headerTitleStyle: {fontWeight: 'bold'},
+          }}
+        />
+        <Stack.Screen
+          name="DeleteUser"
+          component={DeleteUser}
+          options={{
+            title: 'Delete User',
+            headerStyle: {backgroundColor: '#008B00'},
+            headerTintColor: '#fff',
+            headerTitleStyle: {fontWeight: 'bold'},
+          }}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
